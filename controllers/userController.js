@@ -292,6 +292,7 @@ const loginController = async (req, res) => {
 
     // undefined password
     user.password = undefined;
+
     res.status(200).send({
       success: true,
       message: "login successfully",
@@ -299,6 +300,7 @@ const loginController = async (req, res) => {
       user,
       fcmToken,
     });
+    
   } catch (error) {
     // console.log(error);
     return res.status(500).send({
