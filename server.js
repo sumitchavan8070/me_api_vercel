@@ -7,6 +7,8 @@ const server = http.createServer(app);
 const chatSocket = require("./Socket/chatSocket");
 
 const cron = require("node-cron");
+const NodeCache = require("node-cache");
+
 const cache = new NodeCache({ stdTTL: 3600 });
 
 const cors = require("cors");
@@ -52,6 +54,18 @@ const cacheMiddleware = (req, res, next) => {
   };
   next();
 };
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Cache-Control", "public, max-age=3600");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
 
 
 //middleware
@@ -131,7 +145,7 @@ app.use("/api/v1/admin/feedback", require("./routes/feedbackRoutes"));
 app.use("/api/v1/auth/abc", require("./routes/examDetailWithYearRoute"));
 
 //port
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 2020;
 
 //listen
 // app.listen(PORT, () => {
