@@ -77,23 +77,14 @@ app.use(
 app.use(express.json());
 app.use(morgan("dev"));
 
-//routes
-// defalut route
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "SUMIT API IS CONNECTED to MeAdhikari",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.status(200).json({
+//     success: true,
+//     message: "SUMIT API IS CONNECTED to MeAdhikari",
+//   });
+// });
 
-
-app.get("/sumit", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "sumit connected",
-  });
-});
 
 
 app.get("/api/clearCache", (req, res) => {
@@ -160,12 +151,12 @@ const PORT = process.env.PORT || 2020;
 // });
 
 server.listen(PORT, () => {
-  console.log(`Server is Running ${PORT}`.bgGreen.white);
+  console.log(`Server is Running ${PORT}`);
 });
 
 // server added to vercel
 
 app.get("/", (req, res) => {
   res.send("Api is running ready to start !");
-  console.log("Root path accessed. Server is running.".bgGreen.white);
+  console.log("Root path accessed. Server is running.");
 });
