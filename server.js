@@ -88,6 +88,13 @@ app.get("/", (req, res) => {
 });
 
 
+app.get("/sumit", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "sumit connected",
+  });
+});
+
 
 app.get("/api/clearCache", (req, res) => {
   console.log("Cache cleared successfully");
