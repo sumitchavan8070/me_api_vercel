@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 dotenv.config();
 
 //database connection
-connectDB();
+// connectDB();
 
 //Rest Object
 
